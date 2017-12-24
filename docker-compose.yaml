@@ -24,3 +24,8 @@ best-price-api:
     SPRING_APPLICATION_NAME: registration-service
     SPRING_SLEUTH_ENABLED: "true"
     SPRING_SLEUTH_SAMPLER_PERCENTAGE: 1
+  
+best-price-fe:
+  build: ./best-price-fe
+  ports:
+    - "5000:5000"
