@@ -29,3 +29,14 @@ best-price-fe:
   build: ./best-price-fe
   ports:
     - "5000:5000"
+
+best-price-search:
+  build: ./best-price-search
+  links:
+    - rabbitmq
+    - mongodb
+  command: './start.sh'
+  environment:
+    - WAIT_HOSTS=rabbitmq:5672
+    - WAIT_AFTER_HOSTS=10
+    - WAIT_BEFORE_HOSTS=10
