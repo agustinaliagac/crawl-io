@@ -28,15 +28,19 @@ best-price-api:
 best-price-fe:
   build: ./best-price-fe
   ports:
-    - "5000:5000"
-
+    - "3000:3000"
+  volumes:
+    - "./best-price-fe:/home/app"
+  command: "run-app"
+  
 best-price-search:
   build: ./best-price-search
   links:
     - rabbitmq
-    - mongodb
-  command: './start.sh'
+  volumes:
+    - "./best-price-search:/home/app"
   environment:
     - WAIT_HOSTS=rabbitmq:5672
     - WAIT_AFTER_HOSTS=10
     - WAIT_BEFORE_HOSTS=10
+  command: "run-app"
