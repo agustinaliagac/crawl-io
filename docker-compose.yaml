@@ -15,6 +15,8 @@ best-price-api:
   ports:
     - "8090:8090"
     - "8091:8091"
+  volumes:
+    - "./best-price-api:/home/app"
   links:
     - rabbitmq
     - mongodb
@@ -24,6 +26,7 @@ best-price-api:
     SPRING_APPLICATION_NAME: registration-service
     SPRING_SLEUTH_ENABLED: "true"
     SPRING_SLEUTH_SAMPLER_PERCENTAGE: 1
+  command: "mvn spring-boot:run"
   
 best-price-fe:
   build: ./best-price-fe
@@ -37,6 +40,7 @@ best-price-search:
   build: ./best-price-search
   links:
     - rabbitmq
+    - mongodb
   volumes:
     - "./best-price-search:/home/app"
   environment:
