@@ -3,6 +3,7 @@
 This project requires Docker and Node.js
 
 Step-by-step guide:
+
 1- Clone this repo 
 ```
 git clone git@github.com:agustinaliagac/best-price-env-dev.git
