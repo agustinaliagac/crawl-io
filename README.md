@@ -1,6 +1,6 @@
 # best-price-env-dev
 
-This project requires Docker and Node.js to be launched
+This project requires Docker and Node.js
 
 Step-by-step guide:
 1- Clone this repo 
