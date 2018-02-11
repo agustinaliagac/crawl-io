@@ -1,50 +1,61 @@
-rabbitmq:
-  image: rabbitmq:3.5.3-management
-  ports:
-    - "5672:5672"
-    - "15672:15672"
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq:3.5.3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
-mongodb:
-  image: mongo:3.0.4
-  ports:
-    - "27017:27017"
-  command: mongod --smallfiles
+  mongodb:
+    image: mongo:3.0.4
+    ports:
+      - "27017:27017"
+    command: mongod --smallfiles
 
-best-price-api:
-  build: ./best-price-api
-  ports:
-    - "8090:8090"
-    - "8091:8091"
-  volumes:
-    - "./best-price-api:/home/app"
-  links:
-    - rabbitmq
-    - mongodb
-  environment:
-    SPRING_DATA_MONGODB_URI: mongodb://mongodb/userregistration
-    SPRING_RABBITMQ_HOST: rabbitmq
-    SPRING_APPLICATION_NAME: registration-service
-    SPRING_SLEUTH_ENABLED: "true"
-    SPRING_SLEUTH_SAMPLER_PERCENTAGE: 1
-  command: "mvn spring-boot:run"
-  
-best-price-fe:
-  build: ./best-price-fe
-  ports:
-    - "3000:3000"
-  volumes:
-    - "./best-price-fe:/home/app"
-  command: "run-app"
-  
-best-price-search:
-  build: ./best-price-search
-  links:
-    - rabbitmq
-    - mongodb
-  volumes:
-    - "./best-price-search:/home/app"
-  environment:
-    - WAIT_HOSTS=rabbitmq:5672
-    - WAIT_AFTER_HOSTS=10
-    - WAIT_BEFORE_HOSTS=10
-  command: "run-app"
+  best-price-api:
+    build:
+      context: ./best-price-api-venv/best-price-api
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - "./best-price-api-venv/best-price-api:/home/app"
+    links:
+      - rabbitmq
+      - mongodb
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongodb/userregistration
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_APPLICATION_NAME: registration-service
+      SPRING_SLEUTH_ENABLED: "true"
+      SPRING_SLEUTH_SAMPLER_PERCENTAGE: 1
+      FLASK_APP: application.py
+      WAIT_HOSTS: rabbitmq:5672
+      WAIT_AFTER_HOSTS: 10
+      WAIT_BEFORE_HOSTS: 10
+    command: "run-app"
+    
+  best-price-fe:
+    build:
+      context: ./best-price-fe
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./best-price-fe:/home/app"
+    command: "run-app"
+    
+  best-price-search:
+    build:
+      context: ./best-price-search
+      dockerfile: Dockerfile.dev
+    links:
+      - rabbitmq
+      - mongodb
+    volumes:
+      - "./best-price-search:/home/app"
+    environment:
+      - WAIT_HOSTS=rabbitmq:5672
+      - WAIT_AFTER_HOSTS=10
+      - WAIT_BEFORE_HOSTS=10
+    command: "run-app"
