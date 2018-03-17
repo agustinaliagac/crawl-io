@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var uuidv4 = require('uuid/v4');
 var search = require('../search');
-const path = require('path');
+var path = require('path');
 
 router.get('/api/search', function(req, res) {
   var searchTerm = encodeURI(req.query.searchTerm);
