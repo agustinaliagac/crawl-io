@@ -21,7 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test2": "react-scripts test --env=jsdom",
-    "test": "node ./node_modules/jest/bin/jest.js",
+    "test": "ls ; node ./node_modules/jest/bin/jest.js",
     "serve:prod": "cd build && ../node_modules/serve/bin/serve.js -p 3000",
     "eject": "react-scripts eject"
   },
