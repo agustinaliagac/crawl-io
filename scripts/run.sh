@@ -1,8 +1,8 @@
-cd best-price-fe
-npm install
+cd crawlio/front-end
+yarn
 
-cd ../best-price-search
-npm install
+cd ../search
+yarn
 
-cd ..
+cd ../..
 docker-compose up --build

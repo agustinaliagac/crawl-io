@@ -1,0 +1,60 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:9.5
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Front end
+      - restore_cache:
+          keys:
+          - v1-frontend-dependencies-{{ checksum "crawlio/front-end/package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-frontend-dependencies-
+
+      - run: cd crawlio/front-end && yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-frontend-dependencies-{{ checksum "crawlio/front-end/package.json" }}
+        
+      - run: cd crawlio/front-end && yarn test
+
+      # Search
+      - restore_cache:
+          keys:
+          - v1-search-dependencies-{{ checksum "crawlio/search/package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-search-dependencies-
+
+      - run: cd crawlio/front-end && yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-search-dependencies-{{ checksum "crawlio/search/package.json" }}
+        
+      - run: cd crawlio/search && yarn test
+
+      # Build Docker Image
+      - setup_remote_docker:
+          docker_layer_caching: true 
+      - run: |
+          TAG=0.1.$CIRCLE_BUILD_NUM
+          docker build -t agustinaliagac/crawlio:$TAG -t agustinaliagac/crawlio:latest . -f Dockerfile.prod      # (4)
+          docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD         # (5)
+          docker push agustinaliagac/crawlio:$TAG
+          docker push agustinaliagac/crawlio:latest
+      - deploy:
+          name: server-deploy
+          command: ssh -o "StrictHostKeyChecking no" $SSH_USERNAME@$SSH_HOSTNAME "cd best-price-production && bash scripts/deploy.sh"

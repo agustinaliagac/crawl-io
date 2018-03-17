@@ -6,24 +6,24 @@ services:
       - "27017:27017"
     command: mongod --smallfiles
 
-  best-price-fe:
+  crawlio-front-end:
     build:
-      context: ./best-price-fe
+      context: ./crawlio/front-end
       dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
     volumes:
-      - "./best-price-fe:/home/app"
+      - "./crawlio/front-end:/home/app"
     command: "run-app"
     
-  best-price-search:
+  crawlio-search:
     build:
-      context: ./best-price-search
+      context: ./crawlio/search
       dockerfile: Dockerfile.dev
     ports:
       - "5000:5000"
     links:
       - mongodb
     volumes:
-      - "./best-price-search:/home/app"
+      - "./crawlio/search:/home/app"
     command: "run-app"

@@ -1,0 +1,17 @@
+FROM node:9.5.0
+
+# Override the base log level (info).
+ENV NPM_CONFIG_LOGLEVEL warn
+
+WORKDIR /home/app/
+
+RUN apt-get update && apt-get install -y --force-yes \
+    zip \
+    nano \
+    netcat
+
+COPY . .
+
+RUN npm install --production
+
+CMD node index.js
