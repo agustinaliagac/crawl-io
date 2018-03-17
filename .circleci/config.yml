@@ -37,7 +37,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-search-dependencies-
 
-      - run: cd crawlio/front-end && yarn install
+      - run: cd crawlio/search && yarn install
 
       - save_cache:
           paths:
