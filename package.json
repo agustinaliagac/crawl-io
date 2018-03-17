@@ -1,0 +1,20 @@
+{
+  "name": "crawlio",
+  "version": "1.0.0",
+  "description": "Like Trivago, but for shopping",
+  "main": "index.js",
+  "repository": "git@github.com:agustinaliagac/crawlio-development",
+  "author": " ",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "pre-push": "^0.1.1"
+  },
+  "scripts": {
+    "test": "cd crawlio/front-end && yarn test ; cd ../search && yarn test",
+    "start": "npm run start:backend & npm run start:frontend",
+    "start:backend": "cd crawlio/search && nodemon index.js",
+    "start:frontend": "cd crawlio/front-end && yarn start",
+    "start:docker": "bash scripts/run.docker.sh"
+  }
+}

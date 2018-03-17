@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js
+  /usr/bin/node /usr/share/yarn/bin/yarn.js remove pre-push
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
@@ -15,7 +15,7 @@ Platform:
 
 npm manifest: 
   {
-    "name": "best-price-fe",
+    "name": "crawlio-front-end",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -37,7 +37,7 @@ npm manifest:
       "start": "react-scripts start",
       "build": "react-scripts build",
       "test2": "react-scripts test --env=jsdom",
-      "test": "node ./node_modules/jest/bin/jest.js",
+      "test": "ls ; node ./node_modules/jest/bin/jest.js",
       "serve:prod": "cd build && ../node_modules/serve/bin/serve.js -p 3000",
       "eject": "react-scripts eject"
     },
@@ -51,7 +51,6 @@ npm manifest:
       "enzyme-adapter-react-16": "^1.1.1",
       "identity-obj-proxy": "^3.0.0",
       "jest": "^22.4.2",
-      "pre-push": "^0.1.1",
       "react-addons-test-utils": "^15.6.2",
       "serve": "^6.5.3"
     },
@@ -8519,4 +8518,4 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/agus/Dev/best-price-env-dev/best-price-fe/node_modules/doctrine/CHANGELOG.md'
+  Error: EACCES: permission denied, unlink '/home/agus/Dev/crawlio-development/crawlio/front-end/node_modules/doctrine/LICENSE'
