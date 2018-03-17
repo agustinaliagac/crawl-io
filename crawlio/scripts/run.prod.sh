@@ -51,14 +51,12 @@ fi
 echo "Waiting for ${waitAfterHosts} seconds..."
 sleep $waitAfterHosts
 
-ls
-
-cd front-end
+cd crawlio/front-end
 
 yarn
 
 yarn build
 
-cd ../search
+cd ../../crawlio/search
 
 node index.js
