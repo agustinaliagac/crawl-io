@@ -10,8 +10,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install yarn --no-install-recommends
 
-COPY . .
+RUN npm install -g nodemon
 
-RUN yarn
-
-CMD yarn build && yarn serve:prod
+COPY crawlio/scripts/run.dev.sh /usr/bin/run.dev.sh
+RUN chmod +x /usr/bin/run.dev.sh

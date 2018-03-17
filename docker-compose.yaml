@@ -6,24 +6,15 @@ services:
       - "27017:27017"
     command: mongod --smallfiles
 
-  crawlio-front-end:
+  crawlio:
     build:
-      context: ./crawlio/front-end
+      context: .
       dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
-    volumes:
-      - "./crawlio/front-end:/home/app"
-    command: "run-app"
-    
-  crawlio-search:
-    build:
-      context: ./crawlio/search
-      dockerfile: Dockerfile.dev
-    ports:
       - "5000:5000"
+    volumes:
+      - "./crawlio:/home/app"
     links:
       - mongodb
-    volumes:
-      - "./crawlio/search:/home/app"
-    command: "run-app"
+    command: "run.dev.sh"

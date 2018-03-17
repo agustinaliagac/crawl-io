@@ -57,4 +57,4 @@ jobs:
           docker push agustinaliagac/crawlio:latest
       - deploy:
           name: server-deploy
-          command: ssh -o "StrictHostKeyChecking no" $SSH_USERNAME@$SSH_HOSTNAME "cd best-price-production && bash scripts/deploy.sh"
+          command: ssh -o "StrictHostKeyChecking no" $SSH_USERNAME@$SSH_HOSTNAME "cd crawlio-production && bash scripts/deploy.sh"

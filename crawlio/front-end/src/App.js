@@ -11,7 +11,7 @@ const App = () => (
     <MuiThemeProvider>
       <div>
         <AppBar
-          title="best-price"
+          title="Crawlio"
         />
         <Router />
       </div>

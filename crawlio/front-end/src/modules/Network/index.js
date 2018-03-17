@@ -3,7 +3,7 @@ const INITIAL_STATE = {
 };
 
 const actionTypes = {
-  UPDATE_LOADING_STATE: 'best-price/Search/UPDATE_LOADING_STATE',
+  UPDATE_LOADING_STATE: 'crawlio/Search/UPDATE_LOADING_STATE',
 };
 
 const actionCreators = {

@@ -1,9 +1,0 @@
-FROM node:9.5.0
-
-# Override the base log level (info).
-ENV NPM_CONFIG_LOGLEVEL warn
-
-WORKDIR /home/app/
-
-COPY scripts/run.sh /usr/bin/run-app
-RUN chmod +x /usr/bin/run-app

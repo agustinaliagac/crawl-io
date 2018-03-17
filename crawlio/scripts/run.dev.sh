@@ -51,4 +51,10 @@ fi
 echo "Waiting for ${waitAfterHosts} seconds..."
 sleep $waitAfterHosts
 
-node index.js
+cd search
+
+nodemon index.js &
+
+cd ../front-end
+
+yarn start

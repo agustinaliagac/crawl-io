@@ -1,5 +1,5 @@
 {
-  "name": "best-price-search",
+  "name": "crawlio-search",
   "version": "1.0.0",
   "description": "Best Price Search",
   "main": "index.js",
@@ -22,12 +22,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agustinaliagac/best-price-search.git"
+    "url": "git+https://github.com/agustinaliagac/crawlio-search.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/agustinaliagac/best-price-search/issues"
+    "url": "https://github.com/agustinaliagac/crawlio-search/issues"
   },
-  "homepage": "https://github.com/agustinaliagac/best-price-search#readme"
+  "homepage": "https://github.com/agustinaliagac/crawlio-search#readme"
 }

@@ -3,7 +3,7 @@ const INITIAL_STATE = {
 };
 
 const actionTypes = {
-  UPDATE_SEARCH_TERM: 'best-price/Search/UPDATE_SEARCH_TERM',
+  UPDATE_SEARCH_TERM: 'crawlio/Search/UPDATE_SEARCH_TERM',
 };
 
 const actionCreators = {

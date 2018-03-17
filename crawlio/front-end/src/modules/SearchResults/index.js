@@ -10,9 +10,9 @@ const INITIAL_STATE = {
 };
 
 const actionTypes = {
-  APPEND_SEARCH_RESULTS: 'best-price/SearchResults/APPEND_SEARCH_RESULTS',
-  UPDATE_SEARCH_UUID: 'best-price/SearchResults/UPDATE_SEARCH_UUID',
-  START_SEARCHING: 'best-price/SearchResults/START_SEARCHING',
+  APPEND_SEARCH_RESULTS: 'crawlio/SearchResults/APPEND_SEARCH_RESULTS',
+  UPDATE_SEARCH_UUID: 'crawlio/SearchResults/UPDATE_SEARCH_UUID',
+  START_SEARCHING: 'crawlio/SearchResults/START_SEARCHING',
 };
 
 const actionCreators = {
