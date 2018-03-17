@@ -21,14 +21,15 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-frontend-dependencies-
 
-      - run: cd crawlio/front-end && yarn install
+      - run: cd crawlio/front-end
+      - run: yarn install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-frontend-dependencies-{{ checksum "crawlio/front-end/package.json" }}
         
-      - run: cd crawlio/front-end && yarn test
+      - run: yarn test
 
       # Search
       - restore_cache:
