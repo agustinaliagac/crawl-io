@@ -51,6 +51,8 @@ fi
 echo "Waiting for ${waitAfterHosts} seconds..."
 sleep $waitAfterHosts
 
+ls
+
 cd front-end
 
 yarn
