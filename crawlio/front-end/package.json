@@ -18,9 +18,10 @@
     "socket.io-client": "^2.0.4"
   },
   "scripts": {
-    "start": "node scripts/copy-data-providers.js && npm run rsStart",
     "rsStart": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "node scripts/copy-data-providers.js && npm run rsStart",
+    "rsBuild": "react-scripts build",
+    "build": "node scripts/copy-data-providers.js && npm run rsBuild",
     "rsTest": "react-scripts test --env=jsdom",
     "test": "node ./node_modules/jest/bin/jest.js",
     "eject": "react-scripts eject"
