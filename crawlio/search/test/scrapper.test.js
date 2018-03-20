@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var scrapper = require('../src/search/scrapper');
-var providers = require('../src/data-providers/');
+var providers = require('../../data-providers');
 
 describe('Scrapper', function() {
     var searchTerm = 'macbook';

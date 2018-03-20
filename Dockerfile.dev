@@ -12,5 +12,5 @@ RUN apt-get update && apt-get install yarn --no-install-recommends
 
 RUN npm install -g nodemon
 
-COPY crawlio/scripts/run.dev.sh /usr/bin/run.dev.sh
+COPY scripts/run.dev.sh /usr/bin/run.dev.sh
 RUN chmod +x /usr/bin/run.dev.sh

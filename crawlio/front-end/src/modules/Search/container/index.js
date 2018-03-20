@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import Search from '../components/Search';
-import { searchActionCreators } from '..';
+import { searchThunks } from '..';
 
 /* eslint-disable react/forbid-prop-types */
 
@@ -11,11 +11,11 @@ class SearchContainer extends PureComponent {
   navigateTo = path => this.props.history.push(path);
 
   render() {
-    const { searchTerm, actionCreators } = this.props;
+    const { searchTerm, thunks } = this.props;
     return (
       <Search
         searchTerm={searchTerm}
-        updateSearchTerm={actionCreators.updateSearchTerm}
+        newSearchTerm={thunks.newSearchTerm}
         navigateTo={this.navigateTo}
       />
     );
@@ -24,7 +24,7 @@ class SearchContainer extends PureComponent {
 
 SearchContainer.propTypes = {
   searchTerm: PropTypes.string.isRequired,
-  actionCreators: PropTypes.object.isRequired,
+  thunks: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
 };
 
@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  actionCreators: bindActionCreators(searchActionCreators, dispatch),
+  thunks: bindActionCreators(searchThunks, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);

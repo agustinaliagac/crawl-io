@@ -1,4 +1,4 @@
-var providerCreators = require('../data-providers');
+var providerCreators = require('../../../data-providers');
 var restClient = require('./restClient');
 var scrapper = require('./scrapper');
 var { getSession } = require('../sessions');

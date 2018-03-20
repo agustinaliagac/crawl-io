@@ -10,7 +10,7 @@ test('Todo component renders the text of the todo', () => {
   const wrapper = shallow(
     <Search
       navigateTo={() => {}}
-      updateSearchTerm={() => {}}
+      newSearchTerm={() => {}}
       searchTerm={"cafetera"}
     />
   );

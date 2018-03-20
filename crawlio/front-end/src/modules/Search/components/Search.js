@@ -13,7 +13,7 @@ class Search extends Component {
     }
 
     render() {
-      const { updateSearchTerm } = this.props;
+      const { newSearchTerm } = this.props;
       return (
         <div className="App">
           <Header />
@@ -27,7 +27,7 @@ class Search extends Component {
           >
             <form onSubmit={this.handleStartSearchClick}>
               <TextField
-                onChange={event => updateSearchTerm(event.target.value)}
+                onChange={event => newSearchTerm(event.target.value)}
                 style={{ width: 350 }}
                 hintText="Escribí el nombre del producto que buscás"
               />
@@ -47,7 +47,7 @@ class Search extends Component {
 
 Search.propTypes = {
   searchTerm: PropTypes.string.isRequired,
-  updateSearchTerm: PropTypes.func.isRequired,
+  newSearchTerm: PropTypes.func.isRequired,
   navigateTo: PropTypes.func.isRequired,
 };
 
