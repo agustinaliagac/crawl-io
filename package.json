@@ -15,6 +15,9 @@
     "start": "npm run start:backend & npm run start:frontend",
     "start:backend": "cd crawlio/search && nodemon index.js",
     "start:frontend": "cd crawlio/front-end && yarn start",
-    "start:docker": "bash scripts/run.docker.sh"
+    "start:docker": "node scripts/run.docker.js"
+  },
+  "devDependencies": {
+    "shelljs": "^0.8.1"
   }
 }

@@ -12,5 +12,5 @@ RUN apt-get update && apt-get install yarn --no-install-recommends
 
 COPY . .
 
-COPY crawlio/scripts/run.prod.sh /usr/bin/run.prod.sh
+COPY scripts/run.prod.sh /usr/bin/run.prod.sh
 RUN chmod +x /usr/bin/run.prod.sh

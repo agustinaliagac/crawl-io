@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var providers = require('../src/data-providers/');
+var providers = require('../../data-providers');
 
 describe('Providers', function() {
     it('should be an object', function() {

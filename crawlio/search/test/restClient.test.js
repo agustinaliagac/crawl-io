@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var restClient = require('../src/search/restClient');
-var providers = require('../src/data-providers/');
+var providers = require('../../data-providers');
 
 describe('RestClient', function() {
     var searchTerm = 'macbook';

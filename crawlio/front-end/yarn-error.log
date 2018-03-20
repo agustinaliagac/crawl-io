@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js remove pre-push
+  /usr/bin/node /usr/share/yarn/bin/yarn.js
 
 PATH: 
-  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+  /home/agus/Dev/crawlio-development/node_modules/.bin:/home/agus/.config/yarn/link/node_modules/.bin:/home/agus/Dev/crawlio-development/node_modules/.bin:/home/agus/.config/yarn/link/node_modules/.bin:/home/agus/.yarn/bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 
 Yarn version: 
   1.3.2
@@ -34,11 +34,11 @@ npm manifest:
       "socket.io-client": "^2.0.4"
     },
     "scripts": {
-      "start": "react-scripts start",
+      "start": "bash bin/copy-data-providers.sh && npm run rsStart",
+      "rsStart": "react-scripts start",
       "build": "react-scripts build",
-      "test2": "react-scripts test --env=jsdom",
-      "test": "ls ; node ./node_modules/jest/bin/jest.js",
-      "serve:prod": "cd build && ../node_modules/serve/bin/serve.js -p 3000",
+      "rsTest": "react-scripts test --env=jsdom",
+      "test": "node ./node_modules/jest/bin/jest.js",
       "eject": "react-scripts eject"
     },
     "devDependencies": {
@@ -5982,6 +5982,13 @@ Lockfile:
     dependencies:
       pify "^2.0.0"
   
+  path@^0.12.7:
+    version "0.12.7"
+    resolved "https://registry.yarnpkg.com/path/-/path-0.12.7.tgz#d4dc2a506c4ce2197eb481ebfcd5b36c0140b10f"
+    dependencies:
+      process "^0.11.1"
+      util "^0.10.3"
+  
   pbkdf2@^3.0.3:
     version "3.0.14"
     resolved "https://registry.yarnpkg.com/pbkdf2/-/pbkdf2-3.0.14.tgz#a35e13c64799b06ce15320f459c230e68e73bade"
@@ -6334,12 +6341,6 @@ Lockfile:
       source-map "^0.6.1"
       supports-color "^4.4.0"
   
-  pre-push@^0.1.1:
-    version "0.1.1"
-    resolved "https://registry.yarnpkg.com/pre-push/-/pre-push-0.1.1.tgz#2a2a79827d243a76c91089897ac707f45e716aac"
-    dependencies:
-      shelljs "0.3.x"
-  
   prelude-ls@~1.1.2:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
@@ -6385,7 +6386,7 @@ Lockfile:
     version "1.0.7"
     resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-1.0.7.tgz#150e20b756590ad3f91093f25a4f2ad8bff30ba3"
   
-  process@^0.11.10:
+  process@^0.11.1, process@^0.11.10:
     version "0.11.10"
     resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   
@@ -7318,10 +7319,6 @@ Lockfile:
       array-map "~0.0.0"
       array-reduce "~0.0.0"
       jsonify "~0.0.0"
-  
-  shelljs@0.3.x:
-    version "0.3.0"
-    resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.3.0.tgz#3596e6307a781544f591f37da618360f31db57b1"
   
   shellwords@^0.1.0, shellwords@^0.1.1:
     version "0.1.1"
@@ -8518,4 +8515,4 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/agus/Dev/crawlio-development/crawlio/front-end/node_modules/doctrine/LICENSE'
+  Error: EACCES: permission denied, unlink '/home/agus/Dev/crawlio-development/crawlio/front-end/node_modules/.bin/acorn'

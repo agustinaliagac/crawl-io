@@ -2,9 +2,10 @@ var olx = function(config) {
     return {
         providerType: 'scrapper',
         providerData: {
+            name: 'OLX',
             url: `https://www.olx.com.ar/nf/search/${config.searchTerm}`,
             itemSelectors: {
-                topSelector: '.item.featuredad.highlighted',
+                topSelector: '.item',
                 title: '.items-info h3',
                 price: '.items-price',
                 link: '.item a@href',
