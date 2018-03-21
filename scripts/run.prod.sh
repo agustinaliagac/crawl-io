@@ -51,6 +51,8 @@ fi
 echo "Waiting for ${waitAfterHosts} seconds..."
 sleep $waitAfterHosts
 
+yarn
+
 cd crawlio/front-end
 
 yarn
