@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import PropTypes from 'prop-types';
 import Header from '../../../components/Header';
+import strings from '../../../strings';
 
 /* eslint-disable react/forbid-prop-types */
 
@@ -15,17 +16,25 @@ class Search extends Component {
     render() {
       const { newSearchTerm } = this.props;
       return (
-        <div className="App">
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}>
           <Header />
           <Card style={{
-            width: 500,
+            width: '80%',
             height: 300,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             }}
           >
-            <form onSubmit={this.handleStartSearchClick}>
+            <form style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center'
+            }} onSubmit={this.handleStartSearchClick}>
               <TextField
                 onChange={event => newSearchTerm(event.target.value)}
                 style={{ width: 350 }}
@@ -34,8 +43,8 @@ class Search extends Component {
               <br />
               <RaisedButton
                 onClick={() => this.handleStartSearchClick()}
-                label="Primary"
-                primary
+                label={strings.searchAction}
+                secondary
                 style={{ margin: 12 }}
               />
             </form>
