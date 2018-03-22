@@ -53,7 +53,7 @@ sleep $waitAfterHosts
 
 cd search
 
-nodemon index.js &
+yarn start &
 
 cd ../front-end
 
