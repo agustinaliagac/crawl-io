@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js
+  /usr/bin/node /usr/share/yarn/bin/yarn.js add lodash
 
 PATH: 
-  /home/agus/Dev/crawlio-development/node_modules/.bin:/home/agus/.config/yarn/link/node_modules/.bin:/home/agus/Dev/crawlio-development/node_modules/.bin:/home/agus/.config/yarn/link/node_modules/.bin:/home/agus/.yarn/bin:/usr/lib/node_modules/npm/bin/node-gyp-bin:/usr/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
 
 Yarn version: 
   1.3.2
@@ -34,9 +34,10 @@ npm manifest:
       "socket.io-client": "^2.0.4"
     },
     "scripts": {
-      "start": "bash bin/copy-data-providers.sh && npm run rsStart",
       "rsStart": "react-scripts start",
-      "build": "react-scripts build",
+      "start": "node scripts/copy-data-providers.js && npm run rsStart",
+      "rsBuild": "react-scripts build",
+      "build": "node scripts/copy-data-providers.js && npm run rsBuild",
       "rsTest": "react-scripts test --env=jsdom",
       "test": "node ./node_modules/jest/bin/jest.js",
       "eject": "react-scripts eject"
@@ -8515,4 +8516,4 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/agus/Dev/crawlio-development/crawlio/front-end/node_modules/.bin/acorn'
+  Error: EACCES: permission denied, mkdir '/home/agus/Dev/crawlio-development/crawlio/front-end/node_modules/babel-generator/node_modules/lodash'

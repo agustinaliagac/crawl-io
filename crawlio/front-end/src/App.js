@@ -12,15 +12,14 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 
 class AppContent extends Component {
   render() {
-    console.log(this.props);
     return(
       <div>
-        { this.props.loading && <LinearProgress color={this.props.muiTheme.palette.accent1Color} mode="indeterminate" /> }
         <AppBar
           title="Crawlio"
           showMenuIconButton={false}
           titleStyle={{ textAlign: 'center' }}
         />
+          { this.props.loading && <LinearProgress color={this.props.muiTheme.palette.accent1Color} mode="indeterminate" /> }
         <Router />
       </div>
     );

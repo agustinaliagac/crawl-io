@@ -8,7 +8,7 @@ const muiTheme = getMuiTheme({
     accent1Color: cyan400,
   },
   appBar: {
-    height: 80,
+    height: 60,
   },
 });
 

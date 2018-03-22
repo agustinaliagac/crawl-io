@@ -9,10 +9,14 @@ var scrapper = function(provider) {
         title: title,
         price: price,
         link: link,
-        thumbnail: thumbnail
+        thumbnail: thumbnail,
     }])
     .paginate(selector)
     .then(function(results) {
+        results.forEach(item => {
+          item.providerName = provider.providerData.name
+        });
+
         return {
             results
         };
