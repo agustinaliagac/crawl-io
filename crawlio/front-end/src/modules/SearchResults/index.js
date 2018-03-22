@@ -64,12 +64,20 @@ export {
   asynchronous as searchResultsAsync,
 };
 
+const shuffle = (a) => {
+  for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.APPEND_SEARCH_RESULTS:
       return {
         ...state,
-        searchResults: [...state.searchResults, ...action.payload],
+        searchResults: shuffle([...state.searchResults, ...action.payload]),
       };
     case actionTypes.UPDATE_SEARCH_UUID:
       return {

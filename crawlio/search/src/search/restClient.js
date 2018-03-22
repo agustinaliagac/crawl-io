@@ -9,7 +9,8 @@ var restClient = function(provider) {
                     title: item[title],
                     price: item[price],
                     link: item[link],
-                    thumbnail: item[thumbnail]
+                    thumbnail: item[thumbnail],
+                    providerName: provider.providerData.name,
                 };
             });
 
