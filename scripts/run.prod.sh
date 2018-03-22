@@ -61,4 +61,4 @@ yarn build
 
 cd ../../crawlio/search
 
-node index.js
+node index.js --max-old-space-size=5000
