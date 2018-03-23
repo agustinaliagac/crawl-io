@@ -15,6 +15,7 @@ var restClient = function(provider) {
             });
 
         return {
+            providerName: provider.providerData.name,
             results
         };
     })

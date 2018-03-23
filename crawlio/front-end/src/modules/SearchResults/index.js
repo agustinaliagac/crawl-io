@@ -7,12 +7,16 @@ let resultsSocket;
 const INITIAL_STATE = {
   searchResults: [],
   searchUUID: '',
+  notificationOpen: false,
+  notificationText: '',
 };
 
 const actionTypes = {
   APPEND_SEARCH_RESULTS: 'crawlio/SearchResults/APPEND_SEARCH_RESULTS',
   UPDATE_SEARCH_UUID: 'crawlio/SearchResults/UPDATE_SEARCH_UUID',
   START_SEARCHING: 'crawlio/SearchResults/START_SEARCHING',
+  SHOW_NOTIFICATION: 'crawlio/SearchResults/SHOW_NOTIFICATION',
+  HIDE_NOTIFICATION: 'crawlio/SearchResults/HIDE_NOTIFICATION',
 };
 
 const actionCreators = {
@@ -27,9 +31,16 @@ const actionCreators = {
   startSearching: () => ({
     type: actionTypes.START_SEARCHING,
   }),
+  showNotification: text => ({
+    type: actionTypes.SHOW_NOTIFICATION,
+    payload: text,
+  }),
+  hideNotification: () => ({
+    type: actionTypes.HIDE_NOTIFICATION,
+  })
 };
 
-const asynchronous = {
+const thunks = {
   searchTerm: term => (
     async (dispatch) => {
       dispatch(networkActionCreators.updateLoadingState(true));
@@ -39,7 +50,7 @@ const asynchronous = {
       const { uuid } = response.data;
 
       dispatch(actionCreators.updateSearchUUID(uuid));
-      dispatch(asynchronous.initializeWebSocket());
+      dispatch(thunks.initializeWebSocket());
     }
   ),
   initializeWebSocket: () => (
@@ -49,10 +60,17 @@ const asynchronous = {
           uuid: getState().results.searchUUID,
         },
       });
-      resultsSocket.on('results', ({ results }) => {
-        console.log('Received results! ', results);
-        dispatch(actionCreators.appendSearchResults(results));
+      resultsSocket.on('results', (data) => {
+        console.log('Received results! ', data);
+        dispatch(actionCreators.appendSearchResults(data.results));
         dispatch(networkActionCreators.updateLoadingState(false));
+        if (getState().results.notificationOpen) {
+          setTimeout(() => {
+            dispatch(actionCreators.showNotification(`Nuevos resultados de ${data.providerName}`));
+          }, 2200);
+        } else {
+          dispatch(actionCreators.showNotification(`Nuevos resultados de ${data.providerName}`));
+        }
       });
     }
   ),
@@ -61,7 +79,7 @@ const asynchronous = {
 export {
   actionTypes as searchResultsActionTypes,
   actionCreators as searchResultsActionCreators,
-  asynchronous as searchResultsAsync,
+  thunks as searchResultsThunks,
 };
 
 const shuffle = (a) => {
@@ -89,6 +107,18 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         searchResults: [],
       };
+    case actionTypes.SHOW_NOTIFICATION:
+      return {
+        ...state,
+        notificationOpen: true,
+        notificationText: action.payload,
+      }
+    case actionTypes.HIDE_NOTIFICATION:
+      return {
+        ...state,
+        notificationOpen: false,
+        notificationText: '',
+      }
     default:
       return state;
   }
