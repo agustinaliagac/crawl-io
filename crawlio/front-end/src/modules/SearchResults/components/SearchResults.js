@@ -59,7 +59,7 @@ const styles = {
     flex: 1,
   },
   searchTextField: {
-    width: 300,
+    width: '100%',
   }
 }
 
@@ -163,7 +163,7 @@ class SearchResults extends Component {
       <div>
       <Toolbar>
         <ToolbarGroup firstChild>
-          <ToolbarTitle style={{ marginLeft: 30, color: this.props.muiTheme.palette.textColor }} text="Búsqueda" />
+          <ToolbarTitle style={{ marginLeft: 30, color: this.props.muiTheme.palette.textColor }} />
           <TextField
             hintText="Escribí el producto que estás buscando"
             style={styles.searchTextField}

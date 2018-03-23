@@ -19,36 +19,28 @@ class Search extends Component {
         <div style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center'
+          alignItems: 'center',
         }}>
           <Header />
-          <Card style={{
-            width: '80%',
-            height: 300,
+          <form style={{
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
-            }}
-          >
-            <form style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center'
-            }} onSubmit={this.handleStartSearchClick}>
-              <TextField
-                onChange={event => newSearchTerm(event.target.value)}
-                style={{ width: 350 }}
-                hintText="Escribí el nombre del producto que buscás"
-              />
-              <br />
-              <RaisedButton
-                onClick={() => this.handleStartSearchClick()}
-                label={strings.searchAction}
-                secondary
-                style={{ margin: 12 }}
-              />
-            </form>
-          </Card>
+            alignItems: 'center',
+            width: '80%',
+          }} onSubmit={this.handleStartSearchClick}>
+            <TextField
+              onChange={event => newSearchTerm(event.target.value)}
+              style={{ width: '80%' }}
+              hintText="Escribí el nombre del producto que buscás"
+            />
+            <br />
+            <RaisedButton
+              onClick={() => this.handleStartSearchClick()}
+              label={strings.searchAction}
+              secondary
+              style={{ margin: 12 }}
+            />
+          </form>
         </div>
       );
     }

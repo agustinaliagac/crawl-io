@@ -1,4 +1,4 @@
 export default {
-  searchHeaderTitle: 'Crawlio es como Trivago, pero para comprar cosas',
+  searchHeaderTitle: 'crawl-io es un buscador de productos online',
   searchAction: 'Buscar',
 };

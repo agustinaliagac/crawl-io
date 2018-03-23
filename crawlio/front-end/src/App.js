@@ -15,7 +15,7 @@ class AppContent extends Component {
     return(
       <div>
         <AppBar
-          title="Crawlio"
+          title="crawl-io"
           showMenuIconButton={false}
           titleStyle={{ textAlign: 'center' }}
         />
