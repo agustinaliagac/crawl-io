@@ -9,7 +9,8 @@ var search = function(searchTerm, uuid) {
     var providers = (function createProviders(){
         return Object.keys(providerCreators).map(item => {
             return providerCreators[item]({
-                searchTerm
+                searchTerm,
+                paginationLimit: 3,
             });
         });
     }());

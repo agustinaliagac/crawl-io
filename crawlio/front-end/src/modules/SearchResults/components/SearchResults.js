@@ -9,6 +9,7 @@ import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import PropTypes from 'prop-types';
 import ContentFilter from 'material-ui/svg-icons/content/filter-list';
+import Snackbar from 'material-ui/Snackbar';
 
 import _ from 'lodash';
 
@@ -70,11 +71,25 @@ class SearchResults extends Component {
       selectedProviders: [],
     };
   }
+  
+  componentDidMount() {
+    document.addEventListener('scroll', this.trackScrolling);
+  }
+
+  componentWillReceiveProps() {
+    const names = this.props.providers.map((item) => {
+      return item.providerData.name;
+    });
+
+    this.setState({
+      ...this.state,
+      selectedProviders: names,
+    });
+  }
 
   debouncedSearch = _.debounce((searchTerm) => {
-    console.log('exeecuting');
-    const { performSearch } = this.props;
-    performSearch(searchTerm);
+    this.props.navigateTo(`/results?searchTerm=${this.props.searchTerm}`);
+    this.props.performSearch();
   }, 1000);
 
   onSearchTextChange = (searchTerm) => {
@@ -83,11 +98,6 @@ class SearchResults extends Component {
     if (searchTerm) {
       this.debouncedSearch(searchTerm);
     }
-  }
-
-  performSearch = (searchTerm) => {
-    const { performSearch } = this.props;
-    performSearch(searchTerm);
   }
 
   renderItem = item => (
@@ -121,21 +131,6 @@ class SearchResults extends Component {
 
   isBottom(el) {
     return el.getBoundingClientRect().bottom <= (window.innerHeight * 1.5);
-  }
-  
-  componentDidMount() {
-    document.addEventListener('scroll', this.trackScrolling);
-  }
-
-  componentWillReceiveProps() {
-    const names = this.props.providers.map((item) => {
-      return item.providerData.name;
-    });
-
-    this.setState({
-      ...this.state,
-      selectedProviders: names,
-    });
   }
   
   trackScrolling = () => {
@@ -196,6 +191,12 @@ class SearchResults extends Component {
             this.renderItems(searchResults)
           }
         </div>
+        <Snackbar
+          open={this.props.notificationOpen}
+          message={this.props.notificationText}
+          autoHideDuration={2000}
+          onRequestClose={this.props.handleHideNotification}
+        />
       </div>
     );
   }
@@ -208,6 +209,10 @@ SearchResults.propTypes = {
   searchTerm: PropTypes.string.isRequired,
   providers: PropTypes.array.isRequired,
   newSearchTerm: PropTypes.func.isRequired,
+  notificationOpen: PropTypes.bool.isRequired,
+  notificationText: PropTypes.string.isRequired,
+  handleHideNotification: PropTypes.func.isRequired,
+  navigateTo: PropTypes.func.isRequired,
 };
 
 export default muiThemeable()(SearchResults);
