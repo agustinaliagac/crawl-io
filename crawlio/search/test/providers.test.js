@@ -37,8 +37,6 @@ describe('Providers', function() {
                     .and.is.not.empty;
                 expect(prov.providerData.itemSelectors).to.have.property('thumbnail').that.is.a('string')
                     .and.is.not.empty;
-                expect(prov.providerData.pagination).to.have.property('selector').that.is.a('string')
-                    .and.is.not.empty;
 
             } else if (prov.providerType === 'rest') {
                 expect(prov.providerData).to.have.property('payloadProperties').that.is.an('object');
