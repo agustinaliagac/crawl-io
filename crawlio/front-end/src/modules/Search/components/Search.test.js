@@ -2,9 +2,9 @@
  * @jest-environment node
  */
 
-import Search from './Search';
 import React from 'react';
 import { shallow } from 'enzyme';
+import Search from './Search';
 
 test('Todo component renders the text of the todo', () => {
   const wrapper = shallow(

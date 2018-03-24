@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Card } from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import PropTypes from 'prop-types';
@@ -20,14 +19,18 @@ class Search extends Component {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-        }}>
+          }}
+        >
           <Header />
-          <form style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            width: '80%',
-          }} onSubmit={this.handleStartSearchClick}>
+          <form
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              width: '80%',
+            }}
+            onSubmit={this.handleStartSearchClick}
+          >
             <TextField
               onChange={event => newSearchTerm(event.target.value)}
               style={{ width: '80%' }}

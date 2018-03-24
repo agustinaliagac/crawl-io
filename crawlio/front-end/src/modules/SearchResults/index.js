@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
 import { http } from '../../api/Services';
 import { networkActionCreators } from '../Network';
+import { shuffle } from '../../utils';
 
 let resultsSocket;
 
@@ -37,7 +38,7 @@ const actionCreators = {
   }),
   hideNotification: () => ({
     type: actionTypes.HIDE_NOTIFICATION,
-  })
+  }),
 };
 
 const thunks = {
@@ -82,14 +83,6 @@ export {
   thunks as searchResultsThunks,
 };
 
-const shuffle = (a) => {
-  for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.APPEND_SEARCH_RESULTS:
@@ -112,13 +105,13 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         notificationOpen: true,
         notificationText: action.payload,
-      }
+      };
     case actionTypes.HIDE_NOTIFICATION:
       return {
         ...state,
         notificationOpen: false,
         notificationText: '',
-      }
+      };
     default:
       return state;
   }

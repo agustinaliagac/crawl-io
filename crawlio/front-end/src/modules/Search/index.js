@@ -18,26 +18,24 @@ const actionCreators = {
   updateProviders: providers => ({
     type: actionTypes.UPDATE_PROVIDERS,
     payload: providers,
-  })
+  }),
 };
 
 const thunks = {
   newSearchTerm: searchTerm => (
-    dispatch => {
+    (dispatch) => {
       dispatch(actionCreators.updateSearchTerm(searchTerm));
 
-      const providers = (function createProviders(){
-        return Object.keys(providerCreators).map(item => {
-            return providerCreators[item]({
-                searchTerm
-            });
-        });
+      const providers = (function createProviders() {
+        return Object.keys(providerCreators).map(item => providerCreators[item]({
+          searchTerm,
+        }));
       }());
 
       dispatch(actionCreators.updateProviders(providers));
     }
   ),
-}
+};
 
 export {
   actionTypes as searchActionTypes,

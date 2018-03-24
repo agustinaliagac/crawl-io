@@ -1,30 +1,30 @@
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import React from 'react';
+import { Provider, connect } from 'react-redux';
 import LinearProgress from 'material-ui/LinearProgress';
-import { connect } from 'react-redux';
+import muiThemeable from 'material-ui/styles/muiThemeable';
+import PropTypes from 'prop-types';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import Router from './modules/Navigation';
 import store from './redux';
 import muiTheme from './styles/theme';
-import muiThemeable from 'material-ui/styles/muiThemeable';
 
-class AppContent extends Component {
-  render() {
-    return(
-      <div>
-        <AppBar
-          title="crawl-io"
-          showMenuIconButton={false}
-          titleStyle={{ textAlign: 'center' }}
-        />
-          { this.props.loading && <LinearProgress color={this.props.muiTheme.palette.accent1Color} mode="indeterminate" /> }
-        <Router />
-      </div>
-    );
-  }
-}
+const AppContent = ({ loading }) => (
+  <div>
+    <AppBar
+      title="crawl-io"
+      showMenuIconButton={false}
+      titleStyle={{ textAlign: 'center' }}
+    />
+    { loading && <LinearProgress color={this.props.muiTheme.palette.accent1Color} mode="indeterminate" /> }
+    <Router />
+  </div>
+);
+
+AppContent.propTypes = {
+  loading: PropTypes.bool.isRequired,
+};
 
 const mapStateToProps = (state) => {
   const { loading } = state.network;
