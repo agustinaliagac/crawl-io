@@ -10,7 +10,7 @@ var alamaula = function(config) {
                 title: '.title a',
                 price: '.amount',
                 link: '.title a@href',
-                thumbnail: '.thumb img@src',
+                thumbnail: '.thumb img@data-src',
             },
             pagination: {
                 selector: '.pagination a.next.follows@href',
