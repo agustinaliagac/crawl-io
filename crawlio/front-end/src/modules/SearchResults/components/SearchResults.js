@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Paper from 'material-ui/Paper';
-import muiThemeable from 'material-ui/styles/muiThemeable';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 import IconMenu from 'material-ui/IconMenu';
@@ -11,53 +9,11 @@ import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 import Snackbar from 'material-ui/Snackbar';
 
 import _ from 'lodash';
+import SearchResultsItem from './SearchResultsItem';
+import strings from '../../../strings';
+import { toObject } from '../../../utils';
 
 /* eslint-disable react/forbid-prop-types */
-
-const cardWidth = 250;
-const cardHeight = 270;
-const imageHeight = 140;
-
-const styles = {
-  paper: {
-    height: cardHeight,
-    width: cardWidth,
-    margin: 15,
-    overflow: 'hidden',
-    textAlign: 'center',
-  },
-  thumbnail: {
-    width: cardWidth,
-    height: 'auto',
-  },
-  itemWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    overflow: 'hidden',
-    width: cardWidth,
-    height: '100%',
-  },
-  imageWrapper: {
-    height: imageHeight,
-    overflow: 'hidden',
-  },
-  itemTitle: {
-    marginTop: 15,
-  },
-  itemPrice: {
-    fontSize: '1.9em',
-    marginBottom: 10,
-  },
-  itemBottomWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    flex: 1,
-  },
-  searchTextField: {
-    width: '100%',
-  },
-};
 
 class SearchResults extends Component {
   constructor(props) {
@@ -106,14 +62,6 @@ class SearchResults extends Component {
     }
   };
 
-  toObject = (array) => {
-    const obj = {};
-    array.forEach((item) => {
-      obj[item] = item;
-    });
-    return obj;
-  }
-
   handleProvidersFilterChange = (event, value) => {
     this.setState({
       selectedProviders: value,
@@ -124,7 +72,7 @@ class SearchResults extends Component {
   renderItems = (searchResults) => {
     const renderedResults = [];
     for (let i = 0; (i < this.state.maxItemsShowing && i < searchResults.length) ; i++) {
-      if (this.toObject(this.state.selectedProviders)[searchResults[i].providerName]) {
+      if (toObject(this.state.selectedProviders)[searchResults[i].providerName]) {
         renderedResults.push(this.renderItem(searchResults[i]));
       }
     }
@@ -132,38 +80,20 @@ class SearchResults extends Component {
   }
 
   renderItem = item => (
-    <a key={item.link} target="_blank" href={item.link}>
-      <Paper
-        style={styles.paper}
-        zDepth={2}
-        rounded
-      >
-        <div style={styles.itemWrapper}>
-          <div style={styles.imageWrapper}>
-            <img alt={item.title} style={styles.thumbnail} src={item.thumbnail} />
-          </div>
-          <div style={styles.itemBottomWrapper}>
-            <span style={styles.itemTitle}>{item.title}</span>
-            <span style={{ ...styles.itemPrice, color: this.props.muiTheme.palette.accent1Color }}>
-              ${item.price}
-            </span>
-          </div>
-        </div>
-      </Paper>
-    </a>
+    <SearchResultsItem providers={this.props.providers} styles={this.props.styles} item={item} />
   );
 
   render() {
-    const { searchResults, searchTerm } = this.props;
+    const { searchResults, searchTerm, styles } = this.props;
     return (
       <div>
         <Toolbar>
           <ToolbarGroup firstChild>
             <ToolbarTitle
-              style={{ marginLeft: 30, color: this.props.muiTheme.palette.textColor }}
+              style={styles.toolbar}
             />
             <TextField
-              hintText="Escribí el producto que estás buscando"
+              hintText={strings.resultsPageSearchTextFieldHint}
               style={styles.searchTextField}
               value={searchTerm}
               onChange={event => this.onSearchTextChange(event.target.value)}
@@ -175,7 +105,7 @@ class SearchResults extends Component {
               onChange={this.handleProvidersFilterChange}
               value={this.state.selectedProviders}
               multiple
-              selectedMenuItemStyle={{ color: this.props.muiTheme.palette.primary1Color }}
+              selectedMenuItemStyle={styles.selectedFilterItem}
               clickCloseDelay={0}
             >
               {
@@ -211,7 +141,7 @@ SearchResults.propTypes = {
   notificationText: PropTypes.string.isRequired,
   handleHideNotification: PropTypes.func.isRequired,
   navigateTo: PropTypes.func.isRequired,
-  muiTheme: PropTypes.object.isRequired,
+  styles: PropTypes.object.isRequired,
 };
 
-export default muiThemeable()(SearchResults);
+export default SearchResults;

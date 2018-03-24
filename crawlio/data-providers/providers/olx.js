@@ -3,6 +3,7 @@ var olx = function(config) {
         providerType: 'scrapper',
         providerData: {
             name: 'OLX',
+            image: 'https://downloads.andyroid.net/wp-content/uploads/2015/07/OLX-Brazil-Buy-and-Sell-icon.png',
             url: `https://www.olx.com.ar/nf/search/${config.searchTerm}`,
             itemSelectors: {
                 topSelector: '.item',

@@ -2,8 +2,10 @@ import io from 'socket.io-client';
 import { http } from '../../api/Services';
 import { networkActionCreators } from '../Network';
 import { shuffle } from '../../utils';
+import strings from '../../strings';
 
 let resultsSocket;
+const SNACKBAR_DELAY = 2200;
 
 const INITIAL_STATE = {
   searchResults: [],
@@ -62,15 +64,14 @@ const thunks = {
         },
       });
       resultsSocket.on('results', (data) => {
-        console.log('Received results! ', data);
         dispatch(actionCreators.appendSearchResults(data.results));
         dispatch(networkActionCreators.updateLoadingState(false));
         if (getState().results.notificationOpen) {
           setTimeout(() => {
-            dispatch(actionCreators.showNotification(`Nuevos resultados de ${data.providerName}`));
-          }, 2200);
+            dispatch(actionCreators.showNotification(strings.snackbarResults(data.providerName)));
+          }, SNACKBAR_DELAY);
         } else {
-          dispatch(actionCreators.showNotification(`Nuevos resultados de ${data.providerName}`));
+          dispatch(actionCreators.showNotification(strings.snackbarResults(data.providerName)));
         }
       });
     }

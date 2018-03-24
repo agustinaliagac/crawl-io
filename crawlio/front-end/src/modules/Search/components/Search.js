@@ -34,7 +34,7 @@ class Search extends Component {
             <TextField
               onChange={event => newSearchTerm(event.target.value)}
               style={{ width: '80%' }}
-              hintText="Escribí el nombre del producto que buscás"
+              hintText={strings.searchTextFieldHint}
             />
             <br />
             <RaisedButton
