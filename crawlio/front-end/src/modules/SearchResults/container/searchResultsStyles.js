@@ -49,6 +49,12 @@ const searchResultsStyles = theme => ({
   selectedFilterItem: {
     color: theme.palette.primary1Color,
   },
+  itemProviderImage: {
+    height: 40,
+    width: 'auto',
+    position: 'absolute',
+    margin: 10,
+  },
 });
 
 export default searchResultsStyles;

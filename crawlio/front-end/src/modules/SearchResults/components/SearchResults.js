@@ -11,6 +11,7 @@ import Snackbar from 'material-ui/Snackbar';
 import _ from 'lodash';
 import SearchResultsItem from './SearchResultsItem';
 import strings from '../../../strings';
+import { toObject } from '../../../utils';
 
 /* eslint-disable react/forbid-prop-types */
 
@@ -61,14 +62,6 @@ class SearchResults extends Component {
     }
   };
 
-  toObject = (array) => {
-    const obj = {};
-    array.forEach((item) => {
-      obj[item] = item;
-    });
-    return obj;
-  }
-
   handleProvidersFilterChange = (event, value) => {
     this.setState({
       selectedProviders: value,
@@ -79,14 +72,16 @@ class SearchResults extends Component {
   renderItems = (searchResults) => {
     const renderedResults = [];
     for (let i = 0; (i < this.state.maxItemsShowing && i < searchResults.length) ; i++) {
-      if (this.toObject(this.state.selectedProviders)[searchResults[i].providerName]) {
+      if (toObject(this.state.selectedProviders)[searchResults[i].providerName]) {
         renderedResults.push(this.renderItem(searchResults[i]));
       }
     }
     return renderedResults;
   }
 
-  renderItem = item => <SearchResultsItem styles={this.props.styles} item={item} />;
+  renderItem = item => (
+    <SearchResultsItem providers={this.props.providers} styles={this.props.styles} item={item} />
+  );
 
   render() {
     const { searchResults, searchTerm, styles } = this.props;

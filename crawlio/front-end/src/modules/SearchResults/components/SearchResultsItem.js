@@ -1,10 +1,11 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
 import PropTypes from 'prop-types';
+import { toObject } from '../../../utils';
 
 /* eslint-disable react/forbid-prop-types */
 
-const SearchResultsItem = ({ item, styles }) => (
+const SearchResultsItem = ({ item, styles, providers }) => (
   <a key={item.link} target="_blank" href={item.link}>
     <Paper
       style={styles.paper}
@@ -12,6 +13,11 @@ const SearchResultsItem = ({ item, styles }) => (
       rounded
     >
       <div style={styles.itemWrapper}>
+        <img
+          style={styles.itemProviderImage}
+          alt={item.providerName}
+          src={toObject(providers, 'providerData.name')[item.providerName].providerData.image}
+        />
         <div style={styles.imageWrapper}>
           <img alt={item.title} style={styles.thumbnail} src={item.thumbnail} />
         </div>
@@ -29,6 +35,7 @@ const SearchResultsItem = ({ item, styles }) => (
 SearchResultsItem.propTypes = {
   item: PropTypes.object.isRequired,
   styles: PropTypes.object.isRequired,
+  providers: PropTypes.array.isRequired,
 };
 
 export default SearchResultsItem;

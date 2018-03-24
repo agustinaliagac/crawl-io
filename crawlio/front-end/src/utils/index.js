@@ -8,6 +8,26 @@ const shuffle = (a) => {
   return a;
 };
 
+const toObject = (array, keyProperty) => {
+  const obj = {};
+  array.forEach((item) => {
+    if (typeof item === 'string') {
+      obj[item] = item;
+    } else if (typeof item === 'object') {
+      const keys = keyProperty.split('.');
+      let objKey = item;
+      keys.forEach((i) => {
+        objKey = objKey[i];
+      });
+      obj[objKey] = item;
+    }
+  });
+
+  console.log(array, obj);
+  return obj;
+};
+
 export {
   shuffle,
+  toObject,
 };
