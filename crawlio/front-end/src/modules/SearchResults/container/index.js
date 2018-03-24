@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import queryString from 'query-string';
+import muiThemeable from 'material-ui/styles/muiThemeable';
 
 import PropTypes from 'prop-types';
 import SearchResults from '../components/SearchResults';
 import { searchResultsThunks, searchResultsActionCreators } from '..';
 import { searchThunks } from '../../Search';
+import searchResultsStyles from './searchResultsStyles';
 
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/prefer-stateless-function */
@@ -37,7 +39,10 @@ class SearchResultsContainer extends Component {
       thunks,
       notificationOpen,
       notificationText,
+      muiTheme,
     } = this.props;
+
+    const styles = searchResultsStyles(muiTheme);
 
     return (
       <SearchResults
@@ -53,6 +58,7 @@ class SearchResultsContainer extends Component {
         notificationOpen={notificationOpen}
         notificationText={notificationText}
         providers={providers}
+        styles={styles}
         navigateTo={this.navigateTo}
         handleHideNotification={this.handleHideNotification}
       />
@@ -71,6 +77,7 @@ SearchResultsContainer.propTypes = {
   notificationText: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
   actionCreators: PropTypes.object.isRequired,
+  muiTheme: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -92,4 +99,4 @@ const mapDispatchToProps = dispatch => ({
   actionCreators: bindActionCreators({ ...searchResultsActionCreators }, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResultsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(muiThemeable()(SearchResultsContainer));

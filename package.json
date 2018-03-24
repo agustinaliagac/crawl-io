@@ -15,9 +15,11 @@
     "start": "npm run start:backend & npm run start:frontend",
     "start:backend": "cd crawlio/search && yarn start",
     "start:frontend": "cd crawlio/front-end && yarn start",
-    "start:docker": "node scripts/run.docker.js"
+    "start:docker": "node scripts/run.docker.js",
+    "lint": "./node_modules/.bin/eslint --ext .jsx,.js crawlio/front-end --ignore-pattern node_modules/"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
