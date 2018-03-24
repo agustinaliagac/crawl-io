@@ -12,11 +12,11 @@ import { searchThunks } from '../../Search';
 /* eslint-disable react/prefer-stateless-function */
 
 class SearchResultsContainer extends Component {
-  navigateTo = path => this.props.history.push(path);
-
   componentWillMount() {
     this.performSearch();
   }
+
+  navigateTo = path => this.props.history.push(path);
 
   performSearch = () => {
     const { searchTerm } = queryString.parse(this.props.location.search);
@@ -29,12 +29,22 @@ class SearchResultsContainer extends Component {
   }
 
   render() {
-    const { searchResults, loading, searchTerm, providers, thunks, notificationOpen, notificationText } = this.props;
+    const {
+      searchResults,
+      loading,
+      searchTerm,
+      providers,
+      thunks,
+      notificationOpen,
+      notificationText,
+    } = this.props;
+
     return (
       <SearchResults
         ref={(ref) => {
           this.searchResults = ref;
-        }}hideNotification
+        }}
+        hideNotification
         searchTerm={searchTerm}
         searchResults={searchResults}
         performSearch={this.performSearch}
@@ -60,6 +70,7 @@ SearchResultsContainer.propTypes = {
   notificationOpen: PropTypes.bool.isRequired,
   notificationText: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
+  actionCreators: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -77,7 +88,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  thunks: bindActionCreators({ ...searchResultsThunks, ...searchThunks}, dispatch),
+  thunks: bindActionCreators({ ...searchResultsThunks, ...searchThunks }, dispatch),
   actionCreators: bindActionCreators({ ...searchResultsActionCreators }, dispatch),
 });
 

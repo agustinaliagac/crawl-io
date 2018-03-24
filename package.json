@@ -18,6 +18,11 @@
     "start:docker": "node scripts/run.docker.js"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
     "shelljs": "^0.8.1"
   }
 }
