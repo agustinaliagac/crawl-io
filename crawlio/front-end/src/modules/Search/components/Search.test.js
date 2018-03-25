@@ -1,7 +1,8 @@
-/* eslint-disable no-console */
 /**
  * @jest-environment node
  */
+
+/* eslint-disable no-console */
 
 import React from 'react';
 import { shallow } from 'enzyme';
