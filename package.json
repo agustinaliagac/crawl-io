@@ -11,12 +11,12 @@
     "pre-push": "^0.1.1"
   },
   "scripts": {
-    "test": "cd crawlio/front-end && yarn test ; cd ../search && yarn test",
+    "test": "npm run lint && cd crawlio/front-end && yarn test && cd ../search && yarn test",
     "start": "npm run start:backend & npm run start:frontend",
     "start:backend": "cd crawlio/search && yarn start",
     "start:frontend": "cd crawlio/front-end && yarn start",
     "start:docker": "node scripts/run.docker.js",
-    "lint": "./node_modules/.bin/eslint --ext .jsx,.js crawlio/front-end --ignore-pattern node_modules/"
+    "lint": "./node_modules/.bin/eslint --ext .jsx,.js crawlio/front-end --ignore-pattern node_modules --ignore-pattern build"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",

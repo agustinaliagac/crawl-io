@@ -6,10 +6,17 @@ module.exports = {
     "env": {
       "es6": true,
       "node": true,
-      "browser": true
+      "browser": true,
+      "jest": true,
     },
     "parser": "babel-eslint",
     "rules": {
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+      "no-var": "off",
+      "func-names": "off",
+      "global-require": "off",
+      "prefer-arrow-callback": "off",
+      "react/forbid-prop-types": "off",
+      "object-curly-newline": "off",
     }
 };

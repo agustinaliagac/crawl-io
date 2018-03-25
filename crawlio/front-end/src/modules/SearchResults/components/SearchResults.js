@@ -13,8 +13,6 @@ import SearchResultsItem from './SearchResultsItem';
 import strings from '../../../strings';
 import { toObject } from '../../../utils';
 
-/* eslint-disable react/forbid-prop-types */
-
 class SearchResults extends Component {
   constructor(props) {
     super(props);

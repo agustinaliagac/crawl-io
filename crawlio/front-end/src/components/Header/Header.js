@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import strings from '../../strings';
 import headerStyles from './headerStyles';
 
-/* eslint-disable react/forbid-prop-types */
-
 const Header = ({ muiTheme }) => {
   const styles = headerStyles(muiTheme);
   return (

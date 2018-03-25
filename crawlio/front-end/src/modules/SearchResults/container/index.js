@@ -10,9 +10,6 @@ import { searchResultsThunks, searchResultsActionCreators } from '..';
 import { searchThunks } from '../../Search';
 import searchResultsStyles from './searchResultsStyles';
 
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable react/prefer-stateless-function */
-
 class SearchResultsContainer extends Component {
   componentWillMount() {
     this.performSearch();
