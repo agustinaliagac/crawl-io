@@ -74,10 +74,8 @@ workflows:
       - build_docker
           filters:
             branches:
-              only:
-                - master
+              only: master
       - deploy_server
           filters:
             branches:
-              only:
-                - master
+              only: master
