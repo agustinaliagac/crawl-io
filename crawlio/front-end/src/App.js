@@ -11,8 +11,6 @@ import store from './redux';
 import theme from './styles/theme';
 import strings from './strings';
 
-/* eslint-disable react/forbid-prop-types */
-
 const AppContent = ({ loading, muiTheme }) => (
   <div>
     <AppBar

@@ -3,8 +3,6 @@ import Paper from 'material-ui/Paper';
 import PropTypes from 'prop-types';
 import { toObject } from '../../../utils';
 
-/* eslint-disable react/forbid-prop-types */
-
 const SearchResultsItem = ({ item, styles, providers }) => (
   <a key={item.link} target="_blank" href={item.link}>
     <Paper

@@ -16,6 +16,7 @@
     "react-scripts": "^1.1.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "shelljs": "^0.8.1",
     "socket.io-client": "^2.0.4"
   },
   "scripts": {

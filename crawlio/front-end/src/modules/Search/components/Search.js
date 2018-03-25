@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import Header from '../../../components/Header';
 import strings from '../../../strings';
 
-/* eslint-disable react/forbid-prop-types */
-
 class Search extends Component {
     handleStartSearchClick = () => {
       this.props.navigateTo(`/results?searchTerm=${this.props.searchTerm}`);

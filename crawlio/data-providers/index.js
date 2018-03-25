@@ -7,11 +7,11 @@ var megatone = require('./providers/megatone');
 var dafiti = require('./providers/dafiti');
 
 module.exports = {
-    alamaula,
-    mercadoLibre,
-    olx,
-    garbarino,
-    falabella,
-    megatone,
-    dafiti,
+  alamaula,
+  mercadoLibre,
+  olx,
+  garbarino,
+  falabella,
+  megatone,
+  dafiti,
 };

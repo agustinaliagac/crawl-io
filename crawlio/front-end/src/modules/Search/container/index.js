@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import Search from '../components/Search';
 import { searchThunks } from '..';
 
-/* eslint-disable react/forbid-prop-types */
-
 class SearchContainer extends PureComponent {
   navigateTo = path => this.props.history.push(path);
 
