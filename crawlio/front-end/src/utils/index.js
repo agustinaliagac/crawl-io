@@ -1,4 +1,4 @@
-/* eslint-disable no-plusplus, no-param-reassign, import/prefer-default-export */
+/* eslint-disable no-plusplus, no-param-reassign, import/prefer-default-export, no-console */
 
 const shuffle = (a) => {
   for (let i = a.length - 1; i > 0; i--) {

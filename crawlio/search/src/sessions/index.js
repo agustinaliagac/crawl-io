@@ -1,16 +1,16 @@
 var sessions = (function initializeSessionsMap() {
-    return {};
+  return {};
 }());
 
-var injectSession = function(uuid, socket) {
-    sessions[uuid] = socket;
-}
+var injectSession = function (uuid, socket) {
+  sessions[uuid] = socket;
+};
 
-var getSession = function(uuid) {
-    return sessions[uuid];
-}
+var getSession = function (uuid) {
+  return sessions[uuid];
+};
 
 module.exports = {
-    injectSession,
-    getSession
+  injectSession,
+  getSession,
 };
