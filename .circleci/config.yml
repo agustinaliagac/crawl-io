@@ -6,9 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/node:9.5
-
     working_directory: ~/repo
 
     steps:
@@ -45,7 +43,12 @@ jobs:
           key: v1-search-dependencies-{{ checksum "crawlio/search/package.json" }}
         
       - run: cd crawlio/search && yarn test
+  build_docker:
+    docker:
+      - image: circleci/node:9.5
+    working_directory: ~/repo
 
+    steps:
       # Build Docker Image
       - setup_remote_docker:
           docker_layer_caching: true 
@@ -55,6 +58,26 @@ jobs:
           docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD         # (5)
           docker push agustinaliagac/crawlio:$TAG
           docker push agustinaliagac/crawlio:latest
+  deploy_server:
+    docker:
+      - image: circleci/node:9.5
+    working_directory: ~/repo
+    steps:
       - deploy:
           name: server-deploy
           command: ssh -o "StrictHostKeyChecking no" $SSH_USERNAME@$SSH_HOSTNAME "cd crawlio-production && bash scripts/deploy.sh"
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - build_docker
+        filters:
+              branches:
+                only:
+                  - master
+      - deploy_server
+        filters:
+            branches:
+              only:
+                - master
