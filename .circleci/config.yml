@@ -72,12 +72,12 @@ workflows:
     jobs:
       - build
       - build_docker
-        filters:
-              branches:
-                only:
-                  - master
+          filters:
+            branches:
+              only:
+                - master
       - deploy_server
-        filters:
+          filters:
             branches:
               only:
                 - master
