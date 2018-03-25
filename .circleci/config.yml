@@ -71,11 +71,16 @@ workflows:
   build_and_deploy:
     jobs:
       - build
-      - build_docker
+      - build_docker:
+          requires:
+            - build
           filters:
             branches:
               only: master
-      - deploy_server
+      - deploy_server:
+          requires:
+            - build
+            - build_docker
           filters:
             branches:
               only: master
