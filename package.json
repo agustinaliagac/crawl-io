@@ -16,6 +16,8 @@
     "start:backend": "cd crawlio/search && yarn start",
     "start:frontend": "cd crawlio/front-end && yarn start",
     "start:docker": "node scripts/run.docker.js",
+    "install:full": "yarn && yarn install:appsDependencies",
+    "install:appsDependencies": "cd crawlio/front-end && yarn && cd ../search && yarn",
     "lint": "./node_modules/.bin/eslint --ext .jsx,.js crawlio/front-end --ignore-pattern node_modules --ignore-pattern build"
   },
   "devDependencies": {
