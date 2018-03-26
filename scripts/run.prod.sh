@@ -55,8 +55,6 @@ yarn
 
 cd crawlio/front-end
 
-yarn
-
 yarn build
 
 cd ../../crawlio/search
