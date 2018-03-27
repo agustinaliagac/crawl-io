@@ -55,6 +55,13 @@ const searchResultsStyles = theme => ({
     position: 'absolute',
     margin: 10,
   },
+  resultsCount: {
+    color: theme.palette.primary1Color,
+    fontSize: '1.6em',
+  },
+  resultsCountWrapper: {
+    margin: 20,
+  },
 });
 
 export default searchResultsStyles;

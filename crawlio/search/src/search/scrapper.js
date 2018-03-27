@@ -1,4 +1,5 @@
 var Xray = require('x-ray');
+var sanitizePrice = require('./sanitizePrice');
 
 var x = Xray();
 var scrapper = function (provider) {
@@ -23,6 +24,7 @@ var scrapper = function (provider) {
     .then(function (results) {
       results.forEach((item) => {
         item.providerName = provider.providerData.name;
+        item.price = sanitizePrice(item.price);
       });
 
       return {

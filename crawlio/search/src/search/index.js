@@ -16,8 +16,6 @@ var search = function (searchTerm, uuid) {
     ));
   }());
 
-  searchTerm = encodeURI(searchTerm);
-
   providers.forEach(function (prov) {
     if (prov.providerType === 'scrapper') {
       promises.push(scrapper(prov));
@@ -26,10 +24,21 @@ var search = function (searchTerm, uuid) {
     }
   });
 
-  promises.forEach(function (pr) {
+  promises.forEach(function (pr, index) {
     Promise.resolve(pr).then(function (results) {
-      if (getSession(uuid)) getSession(uuid).emit('results', results);
-    });
+      promises.splice(index, 1);
+      if (getSession(uuid)) {
+        getSession(uuid).emit('results', results);
+        if (promises.length === 1) getSession(uuid).emit('finished');
+      }
+    })
+      .catch(function (error) {
+        console.error(error);
+        promises.splice(index, 1);
+        if (getSession(uuid) && promises.length === 1) {
+          getSession(uuid).emit('finished');
+        }
+      });
   });
 };
 

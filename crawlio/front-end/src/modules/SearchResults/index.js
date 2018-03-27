@@ -65,7 +65,6 @@ const thunks = {
       });
       resultsSocket.on('results', (data) => {
         dispatch(actionCreators.appendSearchResults(data.results));
-        dispatch(networkActionCreators.updateLoadingState(false));
         if (getState().results.notificationOpen) {
           setTimeout(() => {
             dispatch(actionCreators.showNotification(strings.snackbarResults(data.providerName)));
@@ -73,6 +72,9 @@ const thunks = {
         } else {
           dispatch(actionCreators.showNotification(strings.snackbarResults(data.providerName)));
         }
+      });
+      resultsSocket.on('finished', () => {
+        dispatch(networkActionCreators.updateLoadingState(false));
       });
     }
   ),

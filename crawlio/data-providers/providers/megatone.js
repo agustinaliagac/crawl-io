@@ -1,10 +1,12 @@
+var { defaultURLEncoder } = require('../urlEncoders');
+
 var megatone = function (config) {
   return {
     providerType: 'scrapper',
     providerData: {
       name: 'Megatone',
       image: 'http://www.portaldemarcas.com/fotos/originales/logo9_marcas_345original.jpg',
-      url: `https://www.megatone.net/busqueda/${config.searchTerm}/1864834/`,
+      url: `https://www.megatone.net/busqueda/${defaultURLEncoder(config.searchTerm)}/1864834/`,
       itemSelectors: {
         topSelector: '.itemMegatoneComun',
         title: '.tituloProductoMenu',

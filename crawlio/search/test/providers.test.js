@@ -16,7 +16,9 @@ describe('Providers', function () {
   it('should have the correct properties', function () {
     const testTermSearch = 'testTermSearch';
     for (const key of Object.keys(providers)) {
-      const prov = providers[key](testTermSearch);
+      const prov = providers[key]({
+        searchTerm: testTermSearch,
+      });
       expect(prov).to.have.property('providerType')
         .that.is.oneOf(['scrapper', 'rest']);
       expect(prov).to.have.property('providerData')
