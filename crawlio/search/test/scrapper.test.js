@@ -8,7 +8,9 @@ describe('Scrapper', function () {
   var searchTerm = 'macbook';
 
   it('should return an array of results', async function () {
-    var res = await scrapper(providers.alamaula(searchTerm));
+    var res = await scrapper(providers.alamaula({
+      searchTerm,
+    }));
     expect(scrapper).to.be.a('function');
     expect(res).to.be.an('object');
     expect(res).to.have.property('results').that.is.an('array').of.lengthOf.above(0);
