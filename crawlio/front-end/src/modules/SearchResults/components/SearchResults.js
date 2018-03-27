@@ -113,6 +113,11 @@ class SearchResults extends Component {
             </IconMenu>
           </ToolbarGroup>
         </Toolbar>
+        { searchResults.length > 0 &&
+          <div style={styles.resultsCountWrapper}>
+            <span style={styles.resultsCount}>{ searchResults.length } { strings.results }</span>
+          </div>
+        }
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
           {
             this.renderItems(searchResults)

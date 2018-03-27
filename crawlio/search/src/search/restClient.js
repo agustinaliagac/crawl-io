@@ -1,4 +1,5 @@
 var axios = require('axios');
+var sanitizePrice = require('./sanitizePrice');
 
 var restClient = function (provider) {
   var {
@@ -13,7 +14,7 @@ var restClient = function (provider) {
       .map(function (item) {
         return {
           title: item[title],
-          price: item[price],
+          price: sanitizePrice(item[price]),
           link: item[link],
           thumbnail: item[thumbnail],
           providerName: provider.providerData.name,

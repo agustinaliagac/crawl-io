@@ -50,9 +50,9 @@ crawl-io's back end consists in a small REST API, asynchronous web crawler and w
 The front end was created with a lot of [ES6 features](https://github.com/lukehoban/es6features) in mind, while the back end has a lot of the old ES5 syntax.
 
 ## Development
-Since this project was designed to be a "demo" only, it showcases how to create a MERN app from an end-to-end perspective. This means that I've included:
+Since this project was designed to be a "demo" only, it showcases how to create a MERN app from an end-to-end perspective. This means that I'm including:
 - Unit testing (Jest / Mocha / Chai)
 - ESLint checking (Extending [Airbnb's](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb))
 - Pre-push linting and testing
 - [CI/CD Pipeline with CircleCI](https://circleci.com/gh/agustinaliagac/crawlio-development) and a VPS provider
-- [Docked Hub publishing](https://hub.docker.com/r/agustinaliagac/crawlio/)
+- [Docker Hub publishing](https://hub.docker.com/r/agustinaliagac/crawlio/)
