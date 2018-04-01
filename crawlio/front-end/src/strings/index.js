@@ -1,6 +1,6 @@
 export default {
   appTitle: 'crawl-io',
-  searchHeaderTitle: 'crawl-io es un buscador de productos online',
+  searchHeaderTitle: 'Buscá en múltiples sitios web al mismo tiempo',
   searchAction: 'Buscar',
   searchTextFieldHint: 'Escribí el nombre del producto que buscás',
   resultsPageSearchTextFieldHint: 'Escribí el producto que estás buscando',

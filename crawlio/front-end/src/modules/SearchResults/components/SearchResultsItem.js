@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import { toObject } from '../../../utils';
 import strings from '../../../strings';
 
+/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
+
 const defaultProductImageURL = 'http://www.abc.net.au/news/image/954416-3x2-940x627.jpg';
 
-const SearchResultsItem = ({ item, styles, providers }) => (
-  <a key={item.link} target="_blank" href={item.link}>
+const SearchResultsItem = ({ item, styles, providers, handleItemSelected }) => (
+  <div style={{ cursor: 'pointer' }} key={item.link} onClick={() => handleItemSelected(item)}>
     <Paper
       style={styles.paper}
       zDepth={2}
@@ -34,13 +36,14 @@ const SearchResultsItem = ({ item, styles, providers }) => (
         </div>
       </div>
     </Paper>
-  </a>
+  </div>
 );
 
 SearchResultsItem.propTypes = {
   item: PropTypes.object.isRequired,
   styles: PropTypes.object.isRequired,
   providers: PropTypes.array.isRequired,
+  handleItemSelected: PropTypes.func.isRequired,
 };
 
 export default SearchResultsItem;

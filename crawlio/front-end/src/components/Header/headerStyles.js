@@ -15,6 +15,10 @@ const headerStyles = theme => ({
     marginTop: 30,
     marginBottom: 30,
   },
+  headerText: {
+    fontSize: '1.3em',
+    color: '#555',
+  },
 });
 
 export default headerStyles;

@@ -25,6 +25,8 @@ describe('Providers', function () {
         .that.is.an('object');
       expect(prov.providerData).to.have.property('url')
         .that.is.a('string').and.is.not.empty;
+      expect(prov.providerData).to.have.property('image').that.is.a('string')
+        .and.is.not.empty;
 
       if (prov.providerType === 'scrapper') {
         expect(prov.providerData).to.have.property('itemSelectors').that.is.an('object');

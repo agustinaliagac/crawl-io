@@ -5,6 +5,15 @@ services:
     ports:
       - "27017:27017"
     command: mongod --smallfiles
+  
+  mongoPanel:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    links:
+      - mongodb
+    env_file:
+      - env/mongoPanel.env
 
   crawlio:
     build:
@@ -18,3 +27,5 @@ services:
     links:
       - mongodb
     command: "run.dev.sh"
+    env_file:
+      - env/crawlio.env
