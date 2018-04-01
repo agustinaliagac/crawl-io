@@ -9,6 +9,7 @@ import SearchResults from '../components/SearchResults';
 import { searchResultsThunks, searchResultsActionCreators } from '..';
 import { searchThunks } from '../../Search';
 import searchResultsStyles from './searchResultsStyles';
+import { http } from '../../../api/Services';
 
 class SearchResultsContainer extends Component {
   componentWillMount() {
@@ -25,6 +26,17 @@ class SearchResultsContainer extends Component {
 
   handleHideNotification = () => {
     this.props.actionCreators.hideNotification();
+  }
+
+  handleItemSelected = (item) => {
+    const payload = {
+      selected: item,
+      results: this.props.searchResults,
+      searchTerm: this.props.searchTerm,
+    };
+
+    http.saveQuery(payload).then(res => console.log(res));
+    window.open(item.link, '_blank');
   }
 
   render() {
@@ -56,6 +68,7 @@ class SearchResultsContainer extends Component {
         notificationText={notificationText}
         providers={providers}
         styles={styles}
+        handleItemSelected={this.handleItemSelected}
         navigateTo={this.navigateTo}
         handleHideNotification={this.handleHideNotification}
       />

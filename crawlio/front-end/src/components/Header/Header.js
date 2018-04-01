@@ -8,7 +8,7 @@ const Header = ({ muiTheme }) => {
   const styles = headerStyles(muiTheme);
   return (
     <header style={styles.header}>
-      <h1 style={styles}>
+      <h1 style={styles.headerText}>
         {strings.searchHeaderTitle}
       </h1>
     </header>

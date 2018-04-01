@@ -78,7 +78,12 @@ class SearchResults extends Component {
   }
 
   renderItem = item => (
-    <SearchResultsItem providers={this.props.providers} styles={this.props.styles} item={item} />
+    <SearchResultsItem
+      handleItemSelected={this.props.handleItemSelected}
+      providers={this.props.providers}
+      styles={this.props.styles}
+      item={item}
+    />
   );
 
   render() {
@@ -143,6 +148,7 @@ SearchResults.propTypes = {
   notificationOpen: PropTypes.bool.isRequired,
   notificationText: PropTypes.string.isRequired,
   handleHideNotification: PropTypes.func.isRequired,
+  handleItemSelected: PropTypes.func.isRequired,
   navigateTo: PropTypes.func.isRequired,
   styles: PropTypes.object.isRequired,
 };
