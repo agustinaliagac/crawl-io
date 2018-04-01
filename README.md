@@ -12,12 +12,12 @@ Demo is deployed to http://www.crawlio.ml/
 ## Setup
 1- Clone this repository
 ```bash
-git clone https://github.com/agustinaliagac/crawlio-development.git
+git clone https://github.com/agustinaliagac/crawl-io.git
 ```
 
 2- Install dependencies
 ```bash
-cd crawlio-development
+cd crawl-io
 yarn install:full
 ```
 
@@ -54,5 +54,5 @@ Since this project was designed to be a "demo" only, it showcases how to create 
 - Unit testing (Jest / Mocha / Chai)
 - ESLint checking (Extending [Airbnb's](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb))
 - Pre-push linting and testing
-- [CI/CD Pipeline with CircleCI](https://circleci.com/gh/agustinaliagac/crawlio-development) and a VPS provider
+- [CI/CD Pipeline with CircleCI](https://circleci.com/gh/agustinaliagac/crawl-io) and a VPS provider
 - [Docker Hub publishing](https://hub.docker.com/r/agustinaliagac/crawlio/)
