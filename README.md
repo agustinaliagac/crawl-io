@@ -37,7 +37,7 @@ yarn start:docker
 
 ## Tech stack and structure
 
-This project was created mostly with JS tools like:
+This project is heavily JS-based and was created with tools/frameworks like:
 - [Node.js](https://nodejs.org/en/)
 - [Express.js](https://expressjs.com/)
 - [React.js](https://reactjs.org/)
