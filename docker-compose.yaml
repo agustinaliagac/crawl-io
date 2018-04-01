@@ -5,7 +5,7 @@ services:
     ports:
       - "27017:27017"
     command: mongod --smallfiles
-  
+
   mongoPanel:
     image: mongo-express
     ports:
