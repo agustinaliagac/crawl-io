@@ -1,8 +1,8 @@
 import io from 'socket.io-client';
 import { http } from '../../api/Services';
 import { networkActionCreators } from '../Network';
-import { shuffle } from '../../utils';
 import strings from '../../strings';
+import rank from '../../utils/rank';
 
 let resultsSocket;
 const SNACKBAR_DELAY = 2200;
@@ -23,9 +23,12 @@ const actionTypes = {
 };
 
 const actionCreators = {
-  appendSearchResults: results => ({
+  appendSearchResults: (results, searchTerm) => ({
     type: actionTypes.APPEND_SEARCH_RESULTS,
-    payload: results,
+    payload: {
+      results,
+      searchTerm,
+    },
   }),
   updateSearchUUID: uuid => ({
     type: actionTypes.UPDATE_SEARCH_UUID,
@@ -53,10 +56,10 @@ const thunks = {
       const { uuid } = response.data;
 
       dispatch(actionCreators.updateSearchUUID(uuid));
-      dispatch(thunks.initializeWebSocket());
+      dispatch(thunks.initializeWebSocket(term));
     }
   ),
-  initializeWebSocket: () => (
+  initializeWebSocket: term => (
     async (dispatch, getState) => {
       resultsSocket = io.connect(`${process.env.REACT_APP_WEBSOCKET_HOST}`, {
         query: {
@@ -64,7 +67,8 @@ const thunks = {
         },
       });
       resultsSocket.on('results', (data) => {
-        dispatch(actionCreators.appendSearchResults(data.results));
+        console.log('received results', data);
+        dispatch(actionCreators.appendSearchResults(data.results, term));
         if (getState().results.notificationOpen) {
           setTimeout(() => {
             dispatch(actionCreators.showNotification(strings.snackbarResults(data.providerName)));
@@ -91,7 +95,8 @@ export default (state = INITIAL_STATE, action) => {
     case actionTypes.APPEND_SEARCH_RESULTS:
       return {
         ...state,
-        searchResults: shuffle([...state.searchResults, ...action.payload]),
+        searchResults:
+          rank([...state.searchResults, ...action.payload.results], action.payload.searchTerm),
       };
     case actionTypes.UPDATE_SEARCH_UUID:
       return {

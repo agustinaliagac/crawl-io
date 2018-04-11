@@ -14,7 +14,7 @@ var restClient = function (provider) {
       .map(function (item) {
         return {
           title: item[title],
-          price: sanitizePrice(item[price]),
+          price: sanitizePrice(item[price]) || '0',
           link: item[link],
           thumbnail: item[thumbnail],
           providerName: provider.providerData.name,
