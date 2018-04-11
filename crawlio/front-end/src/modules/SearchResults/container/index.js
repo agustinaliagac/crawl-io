@@ -35,7 +35,7 @@ class SearchResultsContainer extends Component {
       searchTerm: this.props.searchTerm,
     };
 
-    http.saveQuery(payload).then(res => console.log(res));
+    http.saveQuery(payload);
     window.open(item.link, '_blank');
   }
 

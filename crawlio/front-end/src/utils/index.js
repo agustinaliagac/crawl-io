@@ -23,7 +23,6 @@ const toObject = (array, keyProperty) => {
     }
   });
 
-  console.log(array, obj);
   return obj;
 };
 
