@@ -24,7 +24,7 @@ var scrapper = function (provider) {
     .then(function (results) {
       results.forEach((item) => {
         item.providerName = provider.providerData.name;
-        item.price = sanitizePrice(item.price);
+        item.price = sanitizePrice(item.price) || '0';
       });
 
       return {
