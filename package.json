@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Like Trivago, but for shopping",
   "main": "index.js",
-  "repository": "git@github.com:agustinaliagac/crawlio-development",
+  "repository": "git@github.com:agustinaliagac/crawl-io",
   "author": " ",
   "license": "MIT",
   "private": false,
