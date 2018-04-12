@@ -23,14 +23,15 @@ const SearchResultsItem = ({ item, styles, providers, handleItemSelected }) => (
         />
         <div style={styles.imageWrapper}>
           <img
+            className="itemThumbnail"
             alt={item.title}
             style={styles.thumbnail}
             src={item.thumbnail || defaultProductImageURL}
           />
         </div>
         <div style={styles.itemBottomWrapper}>
-          <span style={styles.itemTitle}>{item.title}</span>
-          <span style={styles.itemPrice}>
+          <span className="itemTitle" style={styles.itemTitle}>{item.title}</span>
+          <span className="itemPrice" style={styles.itemPrice}>
             { item.price ? `$ ${item.price}` : strings.noPrice }
           </span>
         </div>

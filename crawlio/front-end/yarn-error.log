@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js remove eslint-config-airbnb
+  /usr/bin/node /usr/share/yarn/bin/yarn.js rsTest --watch
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
@@ -32,6 +32,7 @@ npm manifest:
       "react-scripts": "^1.1.1",
       "redux": "^3.7.2",
       "redux-thunk": "^2.2.0",
+      "shelljs": "^0.8.1",
       "socket.io-client": "^2.0.4"
     },
     "scripts": {
@@ -51,22 +52,11 @@ npm manifest:
       "babel-preset-stage-0": "^6.24.1",
       "enzyme": "^3.3.0",
       "enzyme-adapter-react-16": "^1.1.1",
-      "eslint-plugin-import": "^2.9.0",
-      "eslint-plugin-jsx-a11y": "^6.0.3",
-      "eslint-plugin-react": "^7.7.0",
       "identity-obj-proxy": "^3.0.0",
       "jest": "^22.4.2",
       "react-addons-test-utils": "^15.6.2",
       "serve": "^6.5.3"
-    },
-    "jest": {
-      "moduleNameMapper": {
-        ".+\\.(css|styl|less|sass|scss|png|svg|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-      },
-      "setupFiles": [
-        "<rootDir>/src/setupTests.js"
-      ]
-    }
+    }s
   }
 
 yarn manifest: 
@@ -3426,7 +3416,7 @@ Lockfile:
     dependencies:
       is-glob "^2.0.0"
   
-  glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2:
+  glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2:
     version "7.1.2"
     resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
     dependencies:
@@ -6795,6 +6785,12 @@ Lockfile:
     dependencies:
       util.promisify "^1.0.0"
   
+  rechoir@^0.6.2:
+    version "0.6.2"
+    resolved "https://registry.yarnpkg.com/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
+    dependencies:
+      resolve "^1.1.6"
+  
   recompose@^0.26.0:
     version "0.26.0"
     resolved "https://registry.yarnpkg.com/recompose/-/recompose-0.26.0.tgz#9babff039cb72ba5bd17366d55d7232fbdfb2d30"
@@ -7061,6 +7057,12 @@ Lockfile:
     version "1.1.7"
     resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
   
+  resolve@^1.1.6:
+    version "1.6.0"
+    resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.6.0.tgz#0fbd21278b27b4004481c395349e7aba60a9ff5c"
+    dependencies:
+      path-parse "^1.0.5"
+  
   resolve@^1.2.0, resolve@^1.3.2:
     version "1.5.0"
     resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.5.0.tgz#1f09acce796c9a762579f31b2c1cc4c3cddf9f36"
@@ -7317,6 +7319,14 @@ Lockfile:
       array-map "~0.0.0"
       array-reduce "~0.0.0"
       jsonify "~0.0.0"
+  
+  shelljs@^0.8.1:
+    version "0.8.1"
+    resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.1.tgz#729e038c413a2254c4078b95ed46e0397154a9f1"
+    dependencies:
+      glob "^7.0.0"
+      interpret "^1.0.0"
+      rechoir "^0.6.2"
   
   shellwords@^0.1.0, shellwords@^0.1.1:
     version "0.1.1"
@@ -8513,4 +8523,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
 
 Trace: 
-  Error: EACCES: permission denied, mkdir '/home/agus/Dev/crawlio-development/crawlio/front-end/node_modules/autoprefixer/node_modules/browserslist'
+  SyntaxError: /home/agus/Dev/crawlio-development/crawlio/front-end/package.json: Unexpected token s in JSON at position 1286
+      at JSON.parse (<anonymous>)
+      at /usr/share/yarn/lib/cli.js:770:59
+      at Generator.next (<anonymous>)
+      at step (/usr/share/yarn/lib/cli.js:92:30)
+      at /usr/share/yarn/lib/cli.js:103:13
+      at <anonymous>

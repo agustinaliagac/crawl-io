@@ -24,8 +24,8 @@
     "start": "node scripts/copy-data-providers.js && npm run rsStart",
     "rsBuild": "react-scripts build",
     "build": "node scripts/copy-data-providers.js && npm run rsBuild",
-    "rsTest": "react-scripts test --env=jsdom",
-    "test": "node ./node_modules/jest/bin/jest.js",
+    "test": "CI=true react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
@@ -37,16 +37,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^22.4.2",
     "react-addons-test-utils": "^15.6.2",
     "serve": "^6.5.3"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      ".+\\.(css|styl|less|sass|scss|png|svg|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-    },
-    "setupFiles": [
-      "<rootDir>/src/setupTests.js"
-    ]
   }
 }
