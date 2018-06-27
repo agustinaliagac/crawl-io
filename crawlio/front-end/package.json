@@ -21,7 +21,7 @@
   },
   "scripts": {
     "rsStart": "react-scripts start",
-    "start": "node scripts/copy-data-providers.js && npm run rsStart",
+    "start": "cp .env.example .env && node scripts/copy-data-providers.js && npm run rsStart",
     "rsBuild": "react-scripts build",
     "build": "node scripts/copy-data-providers.js && npm run rsBuild",
     "test": "CI=true react-scripts test --env=jsdom",
