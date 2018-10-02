@@ -4,8 +4,6 @@ crawl-io is a small (but end-to-end) demo MERN application for searching product
 
 Read more: https://medium.com/@agustin.aliaga/building-an-ecommerce-scraper-with-node-js-and-react-js-7613401169fb
 
-Demo is deployed to http://www.crawlio.ml/
-
 ## Requirements
 - Node (v9+)
 - Yarn
